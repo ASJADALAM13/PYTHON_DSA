@@ -1,0 +1,59 @@
+class Node:
+    def __init__(self,Data=None,Link=None):
+        self.Data=Data
+        self.Link=Link
+
+    def set_Data(self,Data):
+        self.Data=Data
+
+    def set_Link(self,Link):
+        self.Link=Link
+        
+    def get_Data(self):
+        return self.Data
+    
+    def get_Link(self):
+        return self.Link
+    
+
+#Creation
+head=Node(10)
+n2=Node(20)
+n3=Node(30)
+n4=Node(40)
+n5=Node(50)
+
+head.set_Link(n2)
+n2.set_Link(n3)
+n3.set_Link(n4)
+n4.set_Link(n5)
+
+
+#Traversing The Linked_List
+
+def dispaly(head):
+    temp=head
+    while temp!=None:
+        print(temp.get_Data(),end="->")
+        temp=temp.get_Link()
+    print(" ")
+
+
+
+#Find the Middle Element of the Linked_List
+def Middle(head):
+     #I am using Two Pointer Approach
+     #Here Fast will Jump Two Steps at a Time
+     #While Slow will Jump Only One Step at a Time
+    fast=head 
+    slow=head
+    while(fast!=None and fast.get_Link()!=None):
+         fast=fast.get_Link().get_Link()
+         slow=slow.get_Link()
+
+    return slow.get_Data()   
+               
+                                           
+mid=Middle(head)   
+dispaly(head)                                 
+print("The Middle Element Of the Linked_List is:",mid)
